@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cuda_Raymarch", "Cuda_Raymarch.vcxproj", "{3EFDBAE3-D76D-40C6-84BF-6ECB6AEF1D30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EFDBAE3-D76D-40C6-84BF-6ECB6AEF1D30}.Debug|x64.ActiveCfg = Debug|x64
+		{3EFDBAE3-D76D-40C6-84BF-6ECB6AEF1D30}.Debug|x64.Build.0 = Debug|x64
+		{3EFDBAE3-D76D-40C6-84BF-6ECB6AEF1D30}.Release|x64.ActiveCfg = Release|x64
+		{3EFDBAE3-D76D-40C6-84BF-6ECB6AEF1D30}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {818359F4-0A07-41A4-9ABA-7CE926E0BDB6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,2 @@
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\x64\Debug\Cuda_Raymarch.exe
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\x64\Debug\Cuda_Raymarch.pdb
