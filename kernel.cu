@@ -6,12 +6,36 @@
 #include <cuda_gl_interop.h>
 #include <iostream>
 
+#include "Sphere.cuh"
+
 #define width 1024   //screen width
 #define height 1024   //screen height
 
 float t = 0.0f;   //timer
 float3* device;   //pointer to memory on the device (GPU VRAM)
 GLuint buffer;   //buffer
+
+
+
+__device__ float distancefield(float3 p)
+{
+	Sphere sp1;
+
+	return sp1.draw(p);
+}
+
+__device__ float3 raymarch(float3 ro, float3 rd)   //raymarching
+{
+	const int maxIteration = 128;
+
+	for (int i = 0; i < maxIteration; i++)
+	{
+		float d = distancefield(ro);
+		if (d < 0.01) return make_float3(1.0f, 1.0f, 1.0f); // if collide paint white
+		ro += d * rd;
+	}
+	return rd;   //background color
+}
 
 __global__ void rendering(float3* output, float k, float rotX, float rotY)
 {
@@ -27,12 +51,16 @@ __global__ void rendering(float3* output, float k, float rotX, float rotY)
 	float finalX = uv.x + rotX;
 	float finalY = uv.y + rotY;
 
-	float3 rd = normalize(make_float3(finalX, finalY, 1.0f));   //ray direction
-
-	float3 c = rd;
+	float3 rd = normalize(make_float3(finalX, finalY, 2.0f));   //ray direction
+	float3 c = raymarch(ro, rd);
+	
+	unsigned char bytes[] = { 
+		(unsigned char)(c.x * 255), 
+		(unsigned char)(c.y * 255), 
+		(unsigned char)(c.z * 255), 
+		1,
+	};
 	float colour;
-	unsigned char bytes[] = { (unsigned char)(c.x * 255), (unsigned char)(c.y * 255), (unsigned char)(c.z * 255), 1 };
-
 	memcpy(&colour, &bytes, sizeof(colour));   //convert from 4 bytes to single float
 	output[i] = make_float3(x, y, colour);
 }
@@ -46,7 +74,6 @@ void time(int x)
 		t += 0.01f;
 	}
 }
-
 
 
 // actual vector representing the camera's direction
@@ -85,6 +112,7 @@ void mouseMove(int x, int y) {
 		std::cout << "rotX: " << rotX << "\trotY: " << rotY << std::endl;
 	}
 }
+
 
 void display(void)
 {

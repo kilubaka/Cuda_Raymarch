@@ -4,6 +4,6 @@
 *.ptx
 *.cubin
 *.fatbin
-.vs/Cuda_Raymarch/v16/Browse.VC.opendb
-x64/Release/Cuda_Raymarch.log
-x64/Release/Cuda_Raymarch.tlog/Cuda_Raymarch.write.1u.tlog
+*.opendb
+*.log
+*.tlog
