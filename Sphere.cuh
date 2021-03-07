@@ -1,6 +1,6 @@
 ﻿#include "Figure.cuh"
 
-class Sphere : Figure
+class Sphere : virtual public Figure
 {
 private:
 	float radius;
@@ -9,8 +9,8 @@ public:
 	__device__ Sphere()
 	{
 		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
-		this->setPosition(make_float3(1.0f, 2.0f, 3.0f));
-		this->setRadius(1.0f);
+		this->setPosition(make_float3(0.0f, 0.0f, 0.0f));
+		this->setRadius(2.0f);
 	}
 
 	__device__ Sphere(float3 Position)
@@ -23,7 +23,7 @@ public:
 	__device__ Sphere(float Radius)
 	{
 		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
-		this->setPosition(make_float3(1.0f, 2.0f, 3.0f));
+		this->setPosition(make_float3(0.0f, 0.0f, 0.0f));
 		this->setRadius(Radius);
 	}
 
@@ -49,7 +49,7 @@ public:
 	}
 
 
-	__device__ float draw(float3 pointPosition)
+	__device__ float draw(float3 pointPosition) override
 	{
 		return length(pointPosition - this->getPosition()) - this->getRadius();
 	}

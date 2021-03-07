@@ -42,75 +42,25 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_function
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_functions.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_types.h
 C:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2\common\inc\helper_math.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\atomic
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cctype
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cerrno
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cfloat
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\climits
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\clocale
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cmath
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\concurrencysal.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\crtdefs.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstddef
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstdint
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstdio
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstdlib
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstring
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\ctime
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cwchar
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\eh.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\exception
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\excpt.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\initializer_list
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\intrin0.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\ios
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\iosfwd
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\iostream
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\isa_availability.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\istream
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\iterator
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\limits
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\limits.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\memory
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\new
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\ostream
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\sal.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\stdarg.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\stdexcept
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\stdint.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\streambuf
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\system_error
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\typeinfo
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\type_traits
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\use_ansi.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\utility
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vadefs.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_exception.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_new.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_new_debug.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_string.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_typeinfo.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xatomic.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xcall_once.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xerrc.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xfacet
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xiosbase
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xkeycheck.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xlocale
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xlocinfo
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xlocinfo.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xlocnum
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xmemory
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xstddef
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xstring
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xthreads.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xtimec.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xtr1common
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xutility
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\yvals.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\yvals_core.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\__msvc_system_error_abi.hpp
 Y:\Windows Kits\10\Include\10.0.18362.0\shared\apiset.h
 Y:\Windows Kits\10\Include\10.0.18362.0\shared\apisetcconv.h
 Y:\Windows Kits\10\Include\10.0.18362.0\shared\basetsd.h
@@ -142,34 +92,18 @@ Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memcpy_s.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memory.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_search.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_share.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_terminate.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wconio.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wctype.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wdirect.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wio.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wprocess.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdio.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdlib.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstring.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wtime.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\ctype.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\errno.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\float.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\locale.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\share.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stddef.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\sys\stat.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\sys\types.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\wchar.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\apiquery2.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi2.h
@@ -227,7 +161,11 @@ Y:\Windows Kits\10\Include\10.0.18362.0\um\winsvc.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\winuser.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\winver.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\wow64apiset.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Box.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\BoxBound.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\BoxRound.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Figure.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Figures.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_ext.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_std.h

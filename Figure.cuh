@@ -1,4 +1,5 @@
-﻿#include <helper_math.h> 
+﻿#pragma once
+#include <helper_math.h> 
 
 class Figure
 {
@@ -7,7 +8,7 @@ protected:
     float3 position;
 
 private:
-    __device__ float virtual draw(float3 Position);
+    __device__ virtual float draw(float3 Position);
 
 public:
     __device__ float3 getColor()

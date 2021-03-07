@@ -4,9 +4,8 @@
 #include <GL/freeglut.h>
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
-#include <iostream>
 
-#include "Sphere.cuh"
+#include "Figures.cuh"
 
 #define width 1024   //screen width
 #define height 1024   //screen height
@@ -15,29 +14,42 @@ float t = 0.0f;   //timer
 float3* device;   //pointer to memory on the device (GPU VRAM)
 GLuint buffer;   //buffer
 
-
-
-__device__ float distancefield(float3 p)
+__device__ float distancefield(float3 p, float t)
 {
-	Sphere sp1;
+	p = make_float3(p.x, cos(t) * p.y + sin(t) * p.z, -sin(t) * p.y + cos(t) * p.z); //add rotation to see better
+	p = make_float3(cos(t) * p.x - sin(t) * p.z, p.y, sin(t) * p.x + cos(t) * p.z);
 
-	return sp1.draw(p);
+	Box box1 = Box(make_float3(2.0f, 0.5f, 0.5f));
+	BoxRound box2 = BoxRound(0.8f, make_float3(0.5f, 0.7f, 1.0f));
+	BoxBound box3 = BoxBound(0.1f);
+
+	return min(min(box1.draw(p), box2.draw(p)), box3.draw(p));
 }
 
-__device__ float3 raymarch(float3 ro, float3 rd)   //raymarching
+__device__ float3 lighting(float3 p, float e, float t)   //directional derivative based lighting
+{
+	float3 a = make_float3(0.1f, 0.1f, 0.1f);   //ambient light color
+	float3 ld = normalize(make_float3(1.0f, 1.0f, -1.0f));   //light direction
+	float3 lc = make_float3(0.8f, 0.85f, 0.0f);   //light color
+	float s = (distancefield(p + ld * e, t) - distancefield(p, t)) / e;
+	float3 d = clamp(s, 0.0, 1.0) * lc + a;
+	return clamp(d, 0.0f, 1.0f);   //final color
+}
+
+__device__ float3 raymarch(float3 ro, float3 rd, float t)   //raymarching
 {
 	const int maxIteration = 128;
 
 	for (int i = 0; i < maxIteration; i++)
 	{
-		float d = distancefield(ro);
-		if (d < 0.01) return make_float3(1.0f, 1.0f, 1.0f); // if collide paint white
+		float d = distancefield(ro, t);
+		if (d < 0.01) return lighting(ro, 0.1f, t); // if collide - shadow
 		ro += d * rd;
 	}
 	return rd;   //background color
 }
 
-__global__ void rendering(float3* output, float k, float rotX, float rotY)
+__global__ void rendering(float3* output, float t, float rotX, float rotY)
 {
 	unsigned int x = blockIdx.x * blockDim.x + threadIdx.x;
 	unsigned int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -52,7 +64,7 @@ __global__ void rendering(float3* output, float k, float rotX, float rotY)
 	float finalY = uv.y + rotY;
 
 	float3 rd = normalize(make_float3(finalX, finalY, 2.0f));   //ray direction
-	float3 c = raymarch(ro, rd);
+	float3 c = raymarch(ro, rd, t);
 	
 	unsigned char bytes[] = { 
 		(unsigned char)(c.x * 255), 
@@ -108,8 +120,6 @@ void mouseMove(int x, int y) {
 
 		if (fabs(rotX) > 180) rotX = clamp(-rotX, -180.0f, 180.0f);
 		if (fabs(rotY) > 180) rotY = clamp(-rotY, -180.0f, 180.0f);
-
-		std::cout << "rotX: " << rotX << "\trotY: " << rotY << std::endl;
 	}
 }
 
