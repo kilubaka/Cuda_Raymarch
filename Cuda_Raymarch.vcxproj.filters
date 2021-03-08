@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Operation.cuh">
+      <Filter>Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations.cuh">
+      <Filter>Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSubtraction.cuh">
+      <Filter>Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="OpUnion.cuh">
+      <Filter>Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="OpIntersection.cuh">
+      <Filter>Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxBound.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxRound.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figure.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Operators">
+      <UniqueIdentifier>{915d2864-faea-454c-997b-67a9a156cef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shapes">
+      <UniqueIdentifier>{d97345c3-a1b4-4c64-a7a3-d61fc150c5cf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

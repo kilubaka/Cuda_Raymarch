@@ -6,6 +6,7 @@
 #include <cuda_gl_interop.h>
 
 #include "Figures.cuh"
+#include "Operations.cuh"
 
 #define width 1024   //screen width
 #define height 1024   //screen height
@@ -19,18 +20,18 @@ __device__ float distancefield(float3 p, float t)
 	p = make_float3(p.x, cos(t) * p.y + sin(t) * p.z, -sin(t) * p.y + cos(t) * p.z); //add rotation to see better
 	p = make_float3(cos(t) * p.x - sin(t) * p.z, p.y, sin(t) * p.x + cos(t) * p.z);
 
-	Box box1 = Box(make_float3(2.0f, 0.5f, 0.5f));
-	BoxRound box2 = BoxRound(0.8f, make_float3(0.5f, 0.7f, 1.0f));
-	BoxBound box3 = BoxBound(0.1f);
+	Box box1 = Box(make_float3(1.0f, 1.0f, 1.0f));
+	Sphere sphere1 = Sphere(1.3f);
 
-	return min(min(box1.draw(p), box2.draw(p)), box3.draw(p));
+
+	return OpSubtraction().operate(sphere1.draw(p), box1.draw(p));
 }
 
 __device__ float3 lighting(float3 p, float e, float t)   //directional derivative based lighting
 {
 	float3 a = make_float3(0.1f, 0.1f, 0.1f);   //ambient light color
 	float3 ld = normalize(make_float3(1.0f, 1.0f, -1.0f));   //light direction
-	float3 lc = make_float3(0.8f, 0.85f, 0.0f);   //light color
+	float3 lc = make_float3(0.8f, 0.0f, 0.8f);   //light color
 	float s = (distancefield(p + ld * e, t) - distancefield(p, t)) / e;
 	float3 d = clamp(s, 0.0, 1.0) * lc + a;
 	return clamp(d, 0.0f, 1.0f);   //final color

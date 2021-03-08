@@ -94,6 +94,11 @@
     <ClInclude Include="BoxRound.cuh" />
     <ClInclude Include="Figure.cuh" />
     <ClInclude Include="Figures.cuh" />
+    <ClInclude Include="Operation.cuh" />
+    <ClInclude Include="Operations.cuh" />
+    <ClInclude Include="OpIntersection.cuh" />
+    <ClInclude Include="OpSubtraction.cuh" />
+    <ClInclude Include="OpUnion.cuh" />
     <ClInclude Include="Sphere.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
