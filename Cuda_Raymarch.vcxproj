@@ -99,6 +99,10 @@
     <ClInclude Include="OpIntersection.cuh" />
     <ClInclude Include="OpSubtraction.cuh" />
     <ClInclude Include="OpUnion.cuh" />
+    <ClInclude Include="SmoothOperation.cuh" />
+    <ClInclude Include="SmOpIntersection.cuh" />
+    <ClInclude Include="SmOpSubtraction.cuh" />
+    <ClInclude Include="SmOpUnion.cuh" />
     <ClInclude Include="Sphere.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

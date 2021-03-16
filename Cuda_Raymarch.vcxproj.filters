@@ -4,19 +4,7 @@
     <CudaCompile Include="kernel.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Operation.cuh">
-      <Filter>Operators</Filter>
-    </ClInclude>
     <ClInclude Include="Operations.cuh">
-      <Filter>Operators</Filter>
-    </ClInclude>
-    <ClInclude Include="OpSubtraction.cuh">
-      <Filter>Operators</Filter>
-    </ClInclude>
-    <ClInclude Include="OpUnion.cuh">
-      <Filter>Operators</Filter>
-    </ClInclude>
-    <ClInclude Include="OpIntersection.cuh">
       <Filter>Operators</Filter>
     </ClInclude>
     <ClInclude Include="Box.cuh">
@@ -37,6 +25,30 @@
     <ClInclude Include="Sphere.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Operation.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="OpIntersection.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSubtraction.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="OpUnion.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothOperation.cuh">
+      <Filter>Operators\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="SmOpUnion.cuh">
+      <Filter>Operators\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="SmOpSubtraction.cuh">
+      <Filter>Operators\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="SmOpIntersection.cuh">
+      <Filter>Operators\Smooth</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operators">
@@ -44,6 +56,12 @@
     </Filter>
     <Filter Include="Shapes">
       <UniqueIdentifier>{d97345c3-a1b4-4c64-a7a3-d61fc150c5cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Operators\Normal">
+      <UniqueIdentifier>{0cbaf8c7-64a0-4a7e-b1f0-4bfd2f08df69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Operators\Smooth">
+      <UniqueIdentifier>{85e538a7-25a5-444a-8c0e-d4cc282425cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

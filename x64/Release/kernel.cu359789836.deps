@@ -176,4 +176,8 @@ Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Operations.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpIntersection.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpSubtraction.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpUnion.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmoothOperation.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpSubtraction.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpUnion.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Sphere.cuh
