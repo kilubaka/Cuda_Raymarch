@@ -25,19 +25,37 @@ __device__ float distancefield(float3 p, float t)
 	Sphere sphere1 = Sphere(1.3f);
 
 
-	return SmOpUnion().operate(sphere1.draw(p), box1.draw(p), 0.1f);
+	return SmOpSubtraction().operate(sphere1.draw(p), box1.draw(p), 0.1f);
+}
+
+__device__ float AmbientOcclusion(float3 p, float3 n, float time)
+{
+	const float 
+		_AoStepSize = 0.2f,	 // 0.01 - 5
+		_AoIntensity = 0.2f; // 0 - 1
+
+	const int _AoIterations = 3; // 1 - 5
+
+	float ao = 0.0;
+	float dist;
+	for (int i = 1; i <= _AoIterations; i++)
+	{
+		dist = _AoStepSize * i;
+		ao += max(0.0f, (dist - distancefield(p + n * dist, time)) / dist);
+	}
+	return (1.0 - ao * _AoIntensity);
 }
 
 __device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, float k, float time)
 {
-	float result = 1.0;
+	float result = 1.0f;
 
 	for (float t = minDt; t < maxDt;)
 	{
 		float h = distancefield(ro + rd * t, time);
-		if (h < 0.001)
+		if (h < 0.001f)
 		{
-			return 0.0;
+			return 0.0f;
 		}
 		result = min(result, k * h / t);
 		t += h;
@@ -48,16 +66,17 @@ __device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, floa
 __device__ float3 Shading(float3 p, float3 n, float time)
 {
 	const float3 
-			_LightColor = make_float3(0.8f, 0.8f, 0.8f),
-			_LightDirection = make_float3(1.0f, 0.0f, 1.0f);
+			_MainColor = make_float3(0.8f, 0.0f, 0.8f),	// 0.0 - 1.0
+			_LightColor = make_float3(0.8f, 0.8f, 0.8f), // 0.0 - 1.0
+			_LightDirection = make_float3(1.0f, 0.0f, 1.0f); // 0.0 - 1.0
 
 	const float2
-			_ShadowDistance = make_float2(0.1f, 10.0f);
+			_ShadowDistance = make_float2(0.1f, 64.0f);
 
 	const float
-			_LightIntensity = 1.0f,
-			_ShadowPenumbra = 60.0f,
-			_ShadowIntensity = 1.0f;
+			_LightIntensity = 1.0f, // 0.5 - 2.0
+			_ShadowPenumbra = 60.0f, // 0 - 128
+			_ShadowIntensity = 1.0f; // 0 - 4
 
 
 	// Directional light
@@ -66,7 +85,8 @@ __device__ float3 Shading(float3 p, float3 n, float time)
 	// Shadows
 	float shadow = softShadow(p, -1 * _LightDirection, _ShadowDistance.x, _ShadowDistance.y, _ShadowPenumbra, time) * 0.5 + 0.5;
 	shadow = max(0.0, pow(shadow, _ShadowIntensity));
-	result *= shadow;
+
+	result *= _MainColor * shadow /** AmbientOcclusion(p, n, time)*/;
 	return result;
 }
 
@@ -89,15 +109,14 @@ __device__ float3 getNormal(float3 position, float t)
 
 __device__ float3 raymarch(float3 ro, float3 rd, float t)
 {
-	const float3 _mainColor = make_float3(0.8f, 0.0f, 0.8f);
-	const float _maxDistance = 200.0f;
-	const int maxIteration = 256;
+	const float _maxDistance = 256.0f; // 0 - 99999
+	const int _maxIteration = 256; // 1 - 99999
 
 	float3 result = make_float3(1, 1, 1);
 	float distanceTravelled = 0;    // distance what ray travelled
 
-	for (int i = 0; i < maxIteration; i++) {
-		if (distanceTravelled > 256.0f) {
+	for (int i = 0; i < _maxIteration; i++) {
+		if (distanceTravelled > _maxDistance) {
 			// draw environment, for endless rays
 			// paint as color of direction
 			result = rd;
@@ -114,7 +133,7 @@ __device__ float3 raymarch(float3 ro, float3 rd, float t)
 			float3 normal = getNormal(position, t);
 			float3 light = Shading(position, normal, t); // product of 2 vectors
 
-			result = _mainColor * light;
+			result = light;
 			break;
 		}
 		distanceTravelled += distance;
