@@ -16,26 +16,72 @@ float3* device;   //pointer to memory on the device (GPU VRAM)
 GLuint buffer;   //buffer
 
 
+// Light and shading params
+__constant__ float
+	_LightIntensity = 1.0f, // 0.5 - 2.0
+	_ShadowPenumbra = 60.0f, // 0 - 128
+	_ShadowIntensity = 1.0f; // 0 - 4
+
+__constant__ float2
+	_ShadowDistance = { 0.1f, 64.0f };
+
+__constant__ float3
+	_MainColor = { 0.0f, 0.8f, 0.8f },	// 0.0 - 1.0 (rgb)
+	_LightColor = { 0.8f, 0.8f, 0.8f }, // 0.0 - 1.0 (rgb)
+	_LightDirection = { 1.0f, 0.0f, 1.0f }; // 0.0 - 1.0 (xyz)
+
+
+// Ambient Occlusion params
+__constant__ float
+	_AoStepSize = 0.2f,	 // 0.01 - 5
+	_AoIntensity = 0.2f; // 0 - 1
+
+__constant__ int
+	_AoIterations = 3; // 1 - 5
+
+
+// Reflection params
+__constant__ float
+	_Accuracy = 0.001f, // 0.(0)1 - 0.1
+	_maxDistance = 200.0f; // 0 - 99999
+
+__constant__ int
+	_ReflectionCount = 3, // 1 - 5
+	_maxIteration = 256; // 1 - 99999
+
+
+__device__ float necklase(float3 p, int N, float degree, Sphere sphere) {
+	float result = sphere.draw(p);
+
+	for (int i = 0; i < N; i++){
+		float rad = 0.0174532925f * degree * i;
+
+		Sphere temp = Sphere(make_float3(
+			cos(rad) * sphere.getPosition().x - sin(rad) * sphere.getPosition().y,
+			sin(rad) * sphere.getPosition().x + cos(rad) * sphere.getPosition().y,
+			sphere.getPosition().z),
+			sphere.getRadius());
+
+		result = SmOpUnion().operate(result, temp.draw(p), 0.2f);
+	}
+
+	return result;
+}
+
 __device__ float distancefield(float3 p, float t)
 {
-	p = make_float3(p.x, cos(t) * p.y + sin(t) * p.z, -sin(t) * p.y + cos(t) * p.z); //add rotation to see better
-	p = make_float3(cos(t) * p.x - sin(t) * p.z, p.y, sin(t) * p.x + cos(t) * p.z);
+	//p = make_float3(p.x, cos(t) * p.y + sin(t) * p.z, -sin(t) * p.y + cos(t) * p.z); //add rotation to see better
+	//p = make_float3(cos(t) * p.x - sin(t) * p.z, p.y, sin(t) * p.x + cos(t) * p.z);
 
-	Box box1 = Box(make_float3(1.0f, 1.0f, 1.0f));
-	Sphere sphere1 = Sphere(1.3f);
+	Sphere sphere1 = Sphere(make_float3(0.0f, 2.0f, 0.0f), 1.0f);
 
-
-	return SmOpSubtraction().operate(sphere1.draw(p), box1.draw(p), 0.1f);
+	return necklase(p, 8, 45, sphere1);
+	//return sphere1.draw(p);
 }
+
 
 __device__ float AmbientOcclusion(float3 p, float3 n, float time)
 {
-	const float 
-		_AoStepSize = 0.2f,	 // 0.01 - 5
-		_AoIntensity = 0.2f; // 0 - 1
-
-	const int _AoIterations = 3; // 1 - 5
-
 	float ao = 0.0;
 	float dist;
 	for (int i = 1; i <= _AoIterations; i++)
@@ -65,20 +111,6 @@ __device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, floa
 
 __device__ float3 Shading(float3 p, float3 n, float time)
 {
-	const float3 
-			_MainColor = make_float3(0.8f, 0.0f, 0.8f),	// 0.0 - 1.0
-			_LightColor = make_float3(0.8f, 0.8f, 0.8f), // 0.0 - 1.0
-			_LightDirection = make_float3(1.0f, 0.0f, 1.0f); // 0.0 - 1.0
-
-	const float2
-			_ShadowDistance = make_float2(0.1f, 64.0f);
-
-	const float
-			_LightIntensity = 1.0f, // 0.5 - 2.0
-			_ShadowPenumbra = 60.0f, // 0 - 128
-			_ShadowIntensity = 1.0f; // 0 - 4
-
-
 	// Directional light
 	float3 result = (_LightColor * dot(-1 * _LightDirection, n) * 0.5 + 0.5) * _LightIntensity;
 
@@ -86,7 +118,7 @@ __device__ float3 Shading(float3 p, float3 n, float time)
 	float shadow = softShadow(p, -1 * _LightDirection, _ShadowDistance.x, _ShadowDistance.y, _ShadowPenumbra, time) * 0.5 + 0.5;
 	shadow = max(0.0, pow(shadow, _ShadowIntensity));
 
-	result *= _MainColor * shadow /** AmbientOcclusion(p, n, time)*/;
+	result *= _MainColor * shadow * AmbientOcclusion(p, n, time);
 	return result;
 }
 
@@ -95,28 +127,26 @@ __device__ float3 getNormal(float3 position, float t)
 {
 	const float2 offset = make_float2(0.001f, 0.0f);
 
-	float3 xyy = make_float3(offset.x, offset.y, offset.y);
-	float3 yxy = make_float3(offset.y, offset.x, offset.y);
-	float3 yyx = make_float3(offset.x, offset.y, offset.x);
+	float3 xyy = { offset.x, offset.y, offset.y };
+	float3 yxy = { offset.y, offset.x, offset.y };
+	float3 yyx = { offset.x, offset.y, offset.x };
 
-	float3 normal = make_float3(
+	float3 normal = {
 		distancefield(position + xyy, t) - distancefield(position - xyy, t),
 		distancefield(position + yxy, t) - distancefield(position - yxy, t),
-		distancefield(position + yyx, t) - distancefield(position - yyx, t));
+		distancefield(position + yyx, t) - distancefield(position - yyx, t) 
+	};
 
 	return normalize(normal);
 }
 
-__device__ float3 raymarch(float3 ro, float3 rd, float t)
+__device__ float3 raymarch(float3 ro, float3 rd, float depth, int maxIteration, float maxDistance, float3 p, float t)
 {
-	const float _maxDistance = 256.0f; // 0 - 99999
-	const int _maxIteration = 256; // 1 - 99999
+	float3 result = { 0, 0, 0 };
+	float distanceTravelled = 0.0f;    // distance what ray travelled
 
-	float3 result = make_float3(1, 1, 1);
-	float distanceTravelled = 0;    // distance what ray travelled
-
-	for (int i = 0; i < _maxIteration; i++) {
-		if (distanceTravelled > _maxDistance) {
+	for (int i = 0; i < maxIteration; i++) {
+		if (distanceTravelled > maxDistance || distanceTravelled >= depth) {
 			// draw environment, for endless rays
 			// paint as color of direction
 			result = rd;
@@ -124,16 +154,13 @@ __device__ float3 raymarch(float3 ro, float3 rd, float t)
 		}
 
 		// position
-		float3 position = ro + rd * distanceTravelled;
+		p = ro + rd * distanceTravelled;
 
 		//check for hit in distancefield, return distance
-		float distance = distancefield(position, t);
-		if (distance < 0.01f) { // too close to think that ray hit
+		float distance = distancefield(p, t);
+		if (distance < _Accuracy) { // too close to think that ray hit
 
-			float3 normal = getNormal(position, t);
-			float3 light = Shading(position, normal, t); // product of 2 vectors
-
-			result = light;
+			result = p;
 			break;
 		}
 		distanceTravelled += distance;
@@ -147,17 +174,54 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 	unsigned int x = blockIdx.x * blockDim.x + threadIdx.x;
 	unsigned int y = blockIdx.y * blockDim.y + threadIdx.y;
 	unsigned int i = (height - y - 1) * width + x;
-	float2 resolution = make_float2((float)width, (float)height);   //screen resolution
-	float2 coordinates = make_float2((float)x, (float)y);   //fragment coordinates
+	float2 resolution = { (float)width, (float)height };   //screen resolution
+	float2 coordinates = { (float)x, (float)y };   //fragment coordinates
 
-	float2 uv = (2 * coordinates - resolution) / resolution.y;
+
 	float3 ro = make_float3(camPos.x, camPos.y, camPos.z);   //ray origin
 
+	float2 uv = (2 * coordinates - resolution) / resolution.y;
 	float finalX = uv.x + rotX;
 	float finalY = uv.y + rotY;
-
 	float3 rd = normalize(make_float3(finalX, finalY, 1.0f));   //ray direction
-	float3 c = raymarch(ro, rd, t);
+	
+	float3 c = rd;
+	float3 hitPosition = raymarch(ro, rd, _maxDistance, _maxIteration, _maxDistance, ro, t);
+
+	bool miss = rd.x == hitPosition.x && rd.y == hitPosition.y && rd.z == hitPosition.z;
+
+	if (!miss)
+	{
+		// Shading
+		float3 n = getNormal(hitPosition, t);
+		float3 s = Shading(hitPosition, n, t);
+		c = s;
+
+		unsigned int mipLevel = 2;
+		float invMipLevel = 0.5f;
+
+		for (int i = 0; i < _ReflectionCount; i++) // Reflections
+		{
+			rd = normalize(reflect(rd, n));
+			ro = hitPosition + rd * 0.01f;
+
+			hitPosition = raymarch(ro, rd, _maxDistance * invMipLevel, _maxDistance * invMipLevel, _maxIteration / mipLevel, hitPosition, t);
+
+			miss = rd.x == hitPosition.x && rd.y == hitPosition.y && rd.z == hitPosition.z;
+
+			if (!miss)
+			{
+				n = getNormal(hitPosition, t);
+				s = Shading(hitPosition, n, t);
+				c += s * invMipLevel;
+			}
+			else break;
+
+			mipLevel *= 2;
+			invMipLevel *= 0.5f;
+		}
+	}
+
 	
 	unsigned char bytes[] = { 
 		(unsigned char)(c.x * 255), 
@@ -170,15 +234,6 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 	output[i] = make_float3(x, y, colour);
 }
 
-void time(int x)
-{
-	if (glutGetWindow())
-	{
-		glutPostRedisplay();
-		glutTimerFunc(10, time, 0);
-		t += 0.01f;
-	}
-}
 
 
 // actual vector representing the camera's direction
@@ -219,16 +274,31 @@ void mouseMove(int x, int y) {
 float3 cameraPos = make_float3(0.0f, 0.0f, -8.0f);
 
 void keyPressed(unsigned char key, int x, int y) {
-	if (key == 'w') cameraPos.z += 0.1f;
-	if (key == 's') cameraPos.z -= 0.1f;
-	if (key == 'd') cameraPos.x += 0.1f;
-	if (key == 'a') cameraPos.x -= 0.1f;
-	if (key == 'r') cameraPos.y += 0.1f;
-	if (key == 'f') cameraPos.y -= 0.1f;
+	switch (key)
+	{
+		case 'w': cameraPos.z += 0.1f; break;
+		case 's': cameraPos.z -= 0.1f; break;
+		case 'd': cameraPos.x += 0.1f; break;
+		case 'a': cameraPos.x -= 0.1f; break;
+		case 'r': cameraPos.y += 0.1f; break;
+		case 'f': cameraPos.y -= 0.1f; break;
+		default:
+			break;
+	}
 }
 
 
-void display(void)
+void time(int x)
+{
+	if (glutGetWindow())
+	{
+		glutPostRedisplay();
+		glutTimerFunc(10, time, 0);
+		t += 0.01f;
+	}
+}
+
+void display()
 {
 	cudaThreadSynchronize();
 	cudaGLMapBufferObject((void**)&device, buffer);   //maps the buffer object into the address space of CUDA
@@ -251,6 +321,7 @@ void display(void)
 int main(int argc, char** argv)
 {
 	cudaMalloc(&device, width * height * sizeof(float3));   //allocate memory on the GPU VRAM
+
 	glutInit(&argc, argv);   //OpenGL initializing
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowPosition(0, 0); // Start point
@@ -275,5 +346,6 @@ int main(int argc, char** argv)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	cudaGLRegisterBufferObject(buffer);   //register the buffer object for access by CUDA
 	glutMainLoop();   //event processing loop
-	cudaFree(device);
+
+	cudaFree(device); //free memory on the GPU VRAM
 }

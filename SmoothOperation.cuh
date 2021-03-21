@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Operation.cuh"
 
-class SmoothOperation : virtual public Operation
+class SmoothOperation : public Operation
 {
 protected:
 	float smooth;
