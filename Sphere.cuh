@@ -8,42 +8,24 @@ private:
 public:
 	__device__ Sphere()
 	{
-		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
 		this->setPosition(make_float3(0.0f, 0.0f, 0.0f));
 		this->setRadius(2.0f);
 	}
 
 	__device__ Sphere(float3 Position)
 	{
-		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
 		this->setPosition(Position);
 		this->setRadius(1.0f);
 	}
 
 	__device__ Sphere(float Radius)
 	{
-		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
 		this->setPosition(make_float3(0.0f, 0.0f, 0.0f));
 		this->setRadius(Radius);
 	}
 
-	__device__ Sphere(float3 Position, float3 Color)
-	{
-		this->setColor(Color);
-		this->setPosition(Position);
-		this->setRadius(1.0f);
-	}
-
 	__device__ Sphere(float3 Position, float Radius)
 	{
-		this->setColor(make_float3(128.0f, 128.0f, 128.0f));
-		this->setPosition(Position);
-		this->setRadius(Radius);
-	}
-
-	__device__ Sphere(float3 Color, float3 Position, float Radius)
-	{
-		this->setColor(Color);
 		this->setPosition(Position);
 		this->setRadius(Radius);
 	}
@@ -51,6 +33,7 @@ public:
 
 	__device__ float draw(float3 pointPosition) override
 	{
+		pointPosition -= getPosition();
 		return length(pointPosition - this->getPosition()) - this->getRadius();
 	}
 

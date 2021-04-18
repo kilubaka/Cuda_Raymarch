@@ -49,6 +49,14 @@
     <ClInclude Include="SmOpIntersection.cuh">
       <Filter>Operators\Smooth</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.cuh" />
+    <ClInclude Include="Controls.cuh" />
+    <ClInclude Include="Prism.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyramid.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operators">

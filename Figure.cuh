@@ -4,22 +4,12 @@
 class Figure
 {
 protected:
-    float3 color;
     float3 position;
 
 private:
     __device__ virtual float draw(float3 Position);
 
 public:
-    __device__ float3 getColor()
-    {
-        return this->color;
-    }
-
-    __device__ void setColor(float3 Color)
-    {
-        this->color = Color;
-    }
 
     __device__ float3 getPosition()
     {

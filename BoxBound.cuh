@@ -11,26 +11,6 @@ public:
 		this->setBoundness(0.0f);
 	}
 
-	__device__ BoxBound(float Roundness) : Box()
-	{
-		this->setBoundness(Roundness);
-	}
-
-	__device__ BoxBound(float Roundness, float3 Dimensions) : Box(Dimensions)
-	{
-		this->setBoundness(Roundness);
-	}
-
-	__device__ BoxBound(float Roundness, float3 Dimensions, float3 Position) : Box(Dimensions, Position)
-	{
-		this->setBoundness(Roundness);
-	}
-
-	__device__ BoxBound(float Roundness, float3 Dimensions, float3 Position, float3 Color) : Box(Dimensions, Position, Color)
-	{
-		this->setBoundness(Roundness);
-	}
-
 	__device__ BoxBound(float3 Dimensions) : Box(Dimensions)
 	{
 		this->setBoundness(0.0f);
@@ -41,15 +21,27 @@ public:
 		this->setBoundness(0.0f);
 	}
 
-	__device__ BoxBound(float3 Dimensions, float3 Position, float3 Color) : Box(Dimensions, Position, Color)
+
+	__device__ BoxBound(float Boundness) : Box()
 	{
-		this->setBoundness(0.0f);
+		this->setBoundness(Boundness);
 	}
+
+	__device__ BoxBound(float Boundness, float3 Dimensions) : Box(Dimensions)
+	{
+		this->setBoundness(Boundness);
+	}
+
+	__device__ BoxBound(float Boundness, float3 Dimensions, float3 Position) : Box(Dimensions, Position)
+	{
+		this->setBoundness(Boundness);
+	}
+
 
 
 	__device__ float draw(float3 pointPosition) override
 	{
-		float3 p = pointPosition;
+		float3 p = pointPosition - getPosition();
 		float e = getBoundness();
 
 		p = fabs(p) - getDimensions();
