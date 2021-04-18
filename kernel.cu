@@ -46,8 +46,9 @@ __constant__ float
 	_maxDistance = 200.0f; // 0 - 99999
 
 __constant__ int
-	_ReflectionCount = 3, // 1 - 5
+	_ReflectionCount = 2, // 1 - 5
 	_maxIteration = 256; // 1 - 99999
+
 
 
 __device__ float necklase(float3 p, int N, float degree, Sphere sphere) {
@@ -68,10 +69,10 @@ __device__ float necklase(float3 p, int N, float degree, Sphere sphere) {
 	return result;
 }
 
-__device__ float distancefield(float3 p, float t)
+__device__ float distancefield(float3 p, float t, float3 cameraPos)
 {
-	//p = make_float3(p.x, cos(t) * p.y + sin(t) * p.z, -sin(t) * p.y + cos(t) * p.z); //add rotation to see better
-	//p = make_float3(cos(t) * p.x - sin(t) * p.z, p.y, sin(t) * p.x + cos(t) * p.z);
+	p = make_float3(p.x, cos(cameraPos.x) * p.y + sin(cameraPos.x) * p.z, -sin(cameraPos.x) * p.y + cos(cameraPos.x) * p.z); //add rotation to see better
+	p = make_float3(cos(cameraPos.y) * p.x - sin(cameraPos.y) * p.z, p.y, sin(cameraPos.y) * p.x + cos(cameraPos.y) * p.z);
 
 	Sphere sphere1 = Sphere(make_float3(0.0f, 2.0f, 0.0f), 1.0f);
 
@@ -80,25 +81,25 @@ __device__ float distancefield(float3 p, float t)
 }
 
 
-__device__ float AmbientOcclusion(float3 p, float3 n, float time)
+__device__ float AmbientOcclusion(float3 p, float3 n, float time, float3 cameraPos)
 {
 	float ao = 0.0;
 	float dist;
 	for (int i = 1; i <= _AoIterations; i++)
 	{
 		dist = _AoStepSize * i;
-		ao += max(0.0f, (dist - distancefield(p + n * dist, time)) / dist);
+		ao += max(0.0f, (dist - distancefield(p + n * dist, time, cameraPos)) / dist);
 	}
 	return (1.0 - ao * _AoIntensity);
 }
 
-__device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, float k, float time)
+__device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, float k, float time, float3 cameraPos)
 {
 	float result = 1.0f;
 
 	for (float t = minDt; t < maxDt;)
 	{
-		float h = distancefield(ro + rd * t, time);
+		float h = distancefield(ro + rd * t, time, cameraPos);
 		if (h < 0.001f)
 		{
 			return 0.0f;
@@ -109,21 +110,21 @@ __device__ float softShadow(float3 ro, float3 rd, float minDt, float maxDt, floa
 	return result;
 }
 
-__device__ float3 Shading(float3 p, float3 n, float time)
+__device__ float3 Shading(float3 p, float3 n, float time, float3 cameraPos)
 {
 	// Directional light
 	float3 result = (_LightColor * dot(-1 * _LightDirection, n) * 0.5 + 0.5) * _LightIntensity;
 
 	// Shadows
-	float shadow = softShadow(p, -1 * _LightDirection, _ShadowDistance.x, _ShadowDistance.y, _ShadowPenumbra, time) * 0.5 + 0.5;
+	float shadow = softShadow(p, -1 * _LightDirection, _ShadowDistance.x, _ShadowDistance.y, _ShadowPenumbra, time, cameraPos) * 0.5 + 0.5;
 	shadow = max(0.0, pow(shadow, _ShadowIntensity));
 
-	result *= _MainColor * shadow * AmbientOcclusion(p, n, time);
+	result *= _MainColor * shadow * AmbientOcclusion(p, n, time, cameraPos);
 	return result;
 }
 
 // get normal from surface to shade properly
-__device__ float3 getNormal(float3 position, float t)
+__device__ float3 getNormal(float3 position, float t, float3 cameraPos)
 {
 	const float2 offset = make_float2(0.001f, 0.0f);
 
@@ -132,15 +133,15 @@ __device__ float3 getNormal(float3 position, float t)
 	float3 yyx = { offset.x, offset.y, offset.x };
 
 	float3 normal = {
-		distancefield(position + xyy, t) - distancefield(position - xyy, t),
-		distancefield(position + yxy, t) - distancefield(position - yxy, t),
-		distancefield(position + yyx, t) - distancefield(position - yyx, t) 
+		distancefield(position + xyy, t, cameraPos) - distancefield(position - xyy, t, cameraPos),
+		distancefield(position + yxy, t, cameraPos) - distancefield(position - yxy, t, cameraPos),
+		distancefield(position + yyx, t, cameraPos) - distancefield(position - yyx, t, cameraPos)
 	};
 
 	return normalize(normal);
 }
 
-__device__ float3 raymarch(float3 ro, float3 rd, float depth, int maxIteration, float maxDistance, float3 p, float t)
+__device__ float3 raymarch(float3 ro, float3 rd, float depth, int maxIteration, float maxDistance, float3 p, float t, float3 cameraPos)
 {
 	float3 result = { 0, 0, 0 };
 	float distanceTravelled = 0.0f;    // distance what ray travelled
@@ -157,7 +158,7 @@ __device__ float3 raymarch(float3 ro, float3 rd, float depth, int maxIteration, 
 		p = ro + rd * distanceTravelled;
 
 		//check for hit in distancefield, return distance
-		float distance = distancefield(p, t);
+		float distance = distancefield(p, t, cameraPos);
 		if (distance < _Accuracy) { // too close to think that ray hit
 
 			result = p;
@@ -169,7 +170,7 @@ __device__ float3 raymarch(float3 ro, float3 rd, float depth, int maxIteration, 
 	return result;
 }
 
-__global__ void rendering(float3* output, float t, float rotX, float rotY, float3 camPos)
+__global__ void rendering(float3* output, float t, float rotX, float rotY, float3 cameraPos)
 {
 	unsigned int x = blockIdx.x * blockDim.x + threadIdx.x;
 	unsigned int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -178,7 +179,7 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 	float2 coordinates = { (float)x, (float)y };   //fragment coordinates
 
 
-	float3 ro = make_float3(camPos.x, camPos.y, camPos.z);   //ray origin
+	float3 ro = make_float3(0.0f, 0.0f, -8.0f);   //ray origin
 
 	float2 uv = (2 * coordinates - resolution) / resolution.y;
 	float finalX = uv.x + rotX;
@@ -186,15 +187,15 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 	float3 rd = normalize(make_float3(finalX, finalY, 1.0f));   //ray direction
 	
 	float3 c = rd;
-	float3 hitPosition = raymarch(ro, rd, _maxDistance, _maxIteration, _maxDistance, ro, t);
+	float3 hitPosition = raymarch(ro, rd, _maxDistance, _maxIteration, _maxDistance, ro, t, cameraPos);
 
 	bool miss = rd.x == hitPosition.x && rd.y == hitPosition.y && rd.z == hitPosition.z;
 
 	if (!miss)
 	{
 		// Shading
-		float3 n = getNormal(hitPosition, t);
-		float3 s = Shading(hitPosition, n, t);
+		float3 n = getNormal(hitPosition, t, cameraPos);
+		float3 s = Shading(hitPosition, n, t, cameraPos);
 		c = s;
 
 		unsigned int mipLevel = 2;
@@ -205,14 +206,14 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 			rd = normalize(reflect(rd, n));
 			ro = hitPosition + rd * 0.01f;
 
-			hitPosition = raymarch(ro, rd, _maxDistance * invMipLevel, _maxDistance * invMipLevel, _maxIteration / mipLevel, hitPosition, t);
+			hitPosition = raymarch(ro, rd, _maxDistance * invMipLevel, _maxDistance * invMipLevel, _maxIteration / mipLevel, hitPosition, t, cameraPos);
 
 			miss = rd.x == hitPosition.x && rd.y == hitPosition.y && rd.z == hitPosition.z;
 
 			if (!miss)
 			{
-				n = getNormal(hitPosition, t);
-				s = Shading(hitPosition, n, t);
+				n = getNormal(hitPosition, t, cameraPos);
+				s = Shading(hitPosition, n, t, cameraPos);
 				c += s * invMipLevel;
 			}
 			else break;
@@ -235,8 +236,7 @@ __global__ void rendering(float3* output, float t, float rotX, float rotY, float
 }
 
 
-
-// actual vector representing the camera's direction
+// Actual vector representing the camera's direction
 float rotX = 0.0f, rotY = 0.0f;
 float mouseSensivityX = 0.01f, mouseSensivityY = 0.003f;
 
@@ -245,7 +245,7 @@ int mouseState = 0;
 void mouseButton(int button, int state, int x, int y) {
 
 	// only start motion if the left button is pressed
-	if (button == GLUT_LEFT_BUTTON) { 
+	if (button == GLUT_LEFT_BUTTON) {
 		// when the button is pressed
 		mouseState = state == GLUT_DOWN ? 1 : 0;
 	}
@@ -271,19 +271,19 @@ void mouseMove(int x, int y) {
 
 
 // Moving
-float3 cameraPos = make_float3(0.0f, 0.0f, -8.0f);
+float3 cameraPos = { 0.0f, 0.0f, 0.0f };
 
 void keyPressed(unsigned char key, int x, int y) {
 	switch (key)
 	{
-		case 'w': cameraPos.z += 0.1f; break;
-		case 's': cameraPos.z -= 0.1f; break;
-		case 'd': cameraPos.x += 0.1f; break;
-		case 'a': cameraPos.x -= 0.1f; break;
-		case 'r': cameraPos.y += 0.1f; break;
-		case 'f': cameraPos.y -= 0.1f; break;
-		default:
-			break;
+	case 'w': cameraPos.x += 0.1f; break;
+	case 's': cameraPos.x -= 0.1f; break;
+	case 'd': cameraPos.y -= 0.1f; break;
+	case 'a': cameraPos.y += 0.1f; break;
+	case 'r': cameraPos.z += 0.1f; break;
+	case 'f': cameraPos.z -= 0.1f; break;
+	default:
+		break;
 	}
 }
 
