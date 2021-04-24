@@ -5,3 +5,5 @@
 #include "SmOpUnion.cuh"
 #include "SmOpSubtraction.cuh"
 #include "SmOpIntersection.cuh"
+
+#include "OpRepeat.cuh"

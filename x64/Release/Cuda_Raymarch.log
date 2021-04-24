@@ -14,9 +14,9 @@ Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Pyramid.cuh(47): warning : invalid narrowin
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmoothOperation.cuh(10): warning : overloaded function "Operation::operate" is hidden by "SmoothOperation::operate" -- virtual function override intended?
   
   kernel.cu
-Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(28): warning C4996: 'cudaGLMapBufferObject': объявлен deprecate
-Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(34): warning C4996: 'cudaGLUnmapBufferObject': объявлен deprecate
-Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(71): warning C4996: 'cudaGLRegisterBufferObject': объявлен deprecate
+Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(27): warning C4996: 'cudaGLMapBufferObject': объявлен deprecate
+Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(32): warning C4996: 'cudaGLUnmapBufferObject': объявлен deprecate
+Z:/XPK/2k20-21/Kyrsach/Cuda_Raymarch/kernel.cu(70): warning C4996: 'cudaGLRegisterBufferObject': объявлен deprecate
      Создается библиотека Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\x64\Release\Cuda_Raymarch.lib и объект Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\x64\Release\Cuda_Raymarch.exp
   LINK : указан параметр /LTCG, но не требуется создание кода; удалите /LTCG из командной строки компоновки для повышения производительности компоновщика
   Cuda_Raymarch.vcxproj -> Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\x64\Release\Cuda_Raymarch.exe

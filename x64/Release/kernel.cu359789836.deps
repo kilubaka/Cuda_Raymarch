@@ -172,14 +172,17 @@ Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_ext.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_std.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\include\GL\glew.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\kernel.cu
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Mandelbrot.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Operation.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Operations.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpRepeat.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpSubtraction.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpUnion.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Prism.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Pyramid.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Scene.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SierpinskiTriangle.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmoothOperation.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpIntersection.cuh
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpSubtraction.cuh

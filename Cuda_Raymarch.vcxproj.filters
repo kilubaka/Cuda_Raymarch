@@ -57,6 +57,15 @@
     <ClInclude Include="Pyramid.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="OpRepeat.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="SierpinskiTriangle.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mandelbrot.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operators">

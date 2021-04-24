@@ -95,14 +95,17 @@
     <ClInclude Include="Controls.cuh" />
     <ClInclude Include="Figure.cuh" />
     <ClInclude Include="Figures.cuh" />
+    <ClInclude Include="Mandelbrot.cuh" />
     <ClInclude Include="Operation.cuh" />
     <ClInclude Include="Operations.cuh" />
     <ClInclude Include="OpIntersection.cuh" />
+    <ClInclude Include="OpRepeat.cuh" />
     <ClInclude Include="OpSubtraction.cuh" />
     <ClInclude Include="OpUnion.cuh" />
     <ClInclude Include="Prism.cuh" />
     <ClInclude Include="Pyramid.cuh" />
     <ClInclude Include="Scene.cuh" />
+    <ClInclude Include="SierpinskiTriangle.cuh" />
     <ClInclude Include="SmoothOperation.cuh" />
     <ClInclude Include="SmOpIntersection.cuh" />
     <ClInclude Include="SmOpSubtraction.cuh" />

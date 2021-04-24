@@ -33,8 +33,8 @@ public:
 
 	__device__ float draw(float3 pointPosition) override
 	{
-		pointPosition -= getPosition();
-		return length(pointPosition - this->getPosition()) - this->getRadius();
+		pointPosition -= this->getPosition();
+		return length(pointPosition) - this->getRadius();
 	}
 
 	__device__ float getRadius()

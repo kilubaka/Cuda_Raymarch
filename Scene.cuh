@@ -24,7 +24,7 @@ __constant__ float2
 
 __constant__ float3
 	_MainColor = { 0.0f, 0.8f, 0.8f },	// 0.0 - 1.0 (rgb)
-	_LightColor = { 0.8f, 0.8f, 0.8f }, // 0.0 - 1.0 (rgb)
+	_LightColor = { 0.8f, 0.8f, 0.0f }, // 0.0 - 1.0 (rgb)
 	_LightDirection = { 1.0f, 0.0f, 1.0f }; // 0.0 - 1.0 (xyz)
 
 
@@ -47,34 +47,14 @@ __constant__ int
 	_maxIteration = 256; // 1 - 99999
 
 
-__device__ float necklase(float3 p, int N, float degree, Sphere sphere) {
-	float result = sphere.draw(p);
-
-	for (int i = 0; i < N; i++) {
-		float rad = 0.0174532925f * degree * i;
-
-		Sphere temp = Sphere(make_float3(
-			cos(rad) * sphere.getPosition().x - sin(rad) * sphere.getPosition().y,
-			sin(rad) * sphere.getPosition().x + cos(rad) * sphere.getPosition().y,
-			sphere.getPosition().z),
-			sphere.getRadius());
-
-		result = SmOpUnion().operate(result, temp.draw(p), 0.2f);
-	}
-
-	return result;
-}
-
-
 __device__ float distancefield(float3 p, float3 cameraPos)
 {
 	p = make_float3(p.x, cos(cameraPos.x) * p.y + sin(cameraPos.x) * p.z, -sin(cameraPos.x) * p.y + cos(cameraPos.x) * p.z); //add rotation to see better
 	p = make_float3(cos(cameraPos.y) * p.x - sin(cameraPos.y) * p.z, p.y, sin(cameraPos.y) * p.x + cos(cameraPos.y) * p.z);
 
-	Sphere sphere1 = Sphere({ 0.0f, 1.0f, 0.0f }, 1.0f);
-	BoxBound box1 = BoxBound(0.2f, { 3.0f, 3.0f, 1.0f });
+	Mandelbrot man = Mandelbrot();
 
-	return OpUnion().operate(necklase(p, 8, 45, sphere1), box1.draw(p));
+	return man.draw(p);
 }
 
 

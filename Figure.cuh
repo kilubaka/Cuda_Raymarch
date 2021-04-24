@@ -5,12 +5,9 @@ class Figure
 {
 protected:
     float3 position;
-
-private:
     __device__ virtual float draw(float3 Position);
 
 public:
-
     __device__ float3 getPosition()
     {
         return this->position;
