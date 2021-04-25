@@ -4,14 +4,14 @@ class OpUnion : virtual public Operation
 {
 public:
     __device__ float operate() override
-    {
+	{
 		return min(getPrimitive_1(), getPrimitive_2());
-    }
+	}
 
     __device__ float operate(float p_1, float p_2) override
-    {
+	{
 		return min(p_1, p_2);
-    }
+	}
 
 	__device__ OpUnion()
 	{

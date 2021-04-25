@@ -17,11 +17,13 @@ public:
 
 	__device__ SierpinskiTriangle(int iterateCount)
 	{
+		this->setOffset(3.0f);
 		this->setIterateCount(iterateCount);
 	}
 
 	__device__ SierpinskiTriangle(int iterateCount, float3 Position)
 	{
+		this->setOffset(3.0f);
 		this->setIterateCount(iterateCount);
 		this->setPosition(Position);
 	}

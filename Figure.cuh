@@ -18,4 +18,3 @@ public:
         this->position = Position;
     }
 };
-

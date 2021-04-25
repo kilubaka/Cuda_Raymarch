@@ -23,8 +23,8 @@ __constant__ float2
 	_ShadowDistance = { 0.1f, 64.0f };
 
 __constant__ float3
-	_MainColor = { 0.0f, 0.8f, 0.8f },	// 0.0 - 1.0 (rgb)
-	_LightColor = { 0.8f, 0.8f, 0.0f }, // 0.0 - 1.0 (rgb)
+	_MainColor = { 1.0f, 1.0f, 0.0f },	// 0.0 - 1.0 (rgb)
+	_LightColor = { 1.0f, 1.0f, 0.0f }, // 0.0 - 1.0 (rgb)
 	_LightDirection = { 1.0f, 0.0f, 1.0f }; // 0.0 - 1.0 (xyz)
 
 
@@ -52,11 +52,9 @@ __device__ float distancefield(float3 p, float3 cameraPos)
 	p = make_float3(p.x, cos(cameraPos.x) * p.y + sin(cameraPos.x) * p.z, -sin(cameraPos.x) * p.y + cos(cameraPos.x) * p.z); //add rotation to see better
 	p = make_float3(cos(cameraPos.y) * p.x - sin(cameraPos.y) * p.z, p.y, sin(cameraPos.y) * p.x + cos(cameraPos.y) * p.z);
 
-	Mandelbrot man = Mandelbrot();
-
-	return man.draw(p);
+	Mandelbrot a = Mandelbrot(50, 4.0f);
+	return a.draw(p);
 }
-
 
 __device__ float AmbientOcclusion(float3 p, float3 n, float3 cameraPos)
 {

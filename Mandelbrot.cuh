@@ -19,23 +19,32 @@ public:
 
 	__device__ Mandelbrot(float scale)
 	{
+		this->setIterateCount(25);
+		this->setPower(8);
+		this->setBailout(4.0f);
 		this->setScale(scale);
 	}
 
-	__device__ Mandelbrot(int iterateCount, float3 Position)
+	__device__ Mandelbrot(int iterateCount, float scale)
 	{
+		this->setPower(8);
+		this->setBailout(4.0f);
 		this->setIterateCount(iterateCount);
-		this->setPosition(Position);
+		this->setScale(scale);
 	}
 
 	__device__ Mandelbrot(int iterateCount, int power)
 	{
+		this->setScale(3.0f);
+		this->setBailout(4.0f);
 		this->setIterateCount(iterateCount);
 		this->setPower(power);
 	}
 
 	__device__ Mandelbrot(int iterateCount, int power, float3 Position)
 	{
+		this->setScale(3.0f);
+		this->setBailout(4.0f);
 		this->setIterateCount(iterateCount);
 		this->setPower(power);
 		this->setPosition(Position);
@@ -44,9 +53,9 @@ public:
 	__device__ float draw(float3 pointPosition) override
 	{
 		float3 p = pointPosition;
-		p /= scale;
+		p /= this->getScale();
 		float3 z = p;
-		float dr = 4.0;
+		float dr = this->getBailout();
 		float r = 0.0;
 		float power = this->getPower();
 		for (int i = 0; i < this->getIterateCount(); i++) {
@@ -67,7 +76,7 @@ public:
 			z = zr * make_float3(sin(theta) * cos(phi), sin(phi) * sin(theta), cos(theta));
 			z += p;
 		}
-		return 0.5 * log(r) * r / dr * scale;
+		return 0.5 * log(r) * r / dr * this->getScale();
 	}
 
 
