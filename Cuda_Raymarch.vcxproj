@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -43,8 +43,8 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2\common\inc;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2\common\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\include;Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\lib\Release\x64;Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -75,11 +75,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;freeglut.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\lib\Release\x64;Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <Include>Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include;Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\include;%(Include)</Include>
+      <Include>%(Include)</Include>
+      <Defines>_width=1280;_height=720;_ShadowIntensity=1.0;_ShadowPenumbra=60;_ShadowDistanceX=0.1;_ShadowDistanceY=60.0;_LightIntensity=1.0;_MainColorR=0;_MainColorG=1;_MainColorB=1;_LightColorR=1;_LightColorG=1;_LightColorB=1;_LightDirectionX=1.0;_LightDirectionY=0.0;_LightDirectionZ=1.0;_AoStepSize=0.2;_AoIntensity=0.2;_AoIterations=3;_Accuracy=0.001;_maxDistance=250;_ReflectionCount=0;_maxIteration=256;</Defines>
     </CudaCompile>
     <CudaLink>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -89,28 +90,31 @@
     <CudaCompile Include="kernel.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Box.cuh" />
-    <ClInclude Include="BoxBound.cuh" />
-    <ClInclude Include="BoxRound.cuh" />
-    <ClInclude Include="Controls.cuh" />
-    <ClInclude Include="Figure.cuh" />
-    <ClInclude Include="Figures.cuh" />
-    <ClInclude Include="Mandelbrot.cuh" />
-    <ClInclude Include="Operation.cuh" />
-    <ClInclude Include="Operations.cuh" />
-    <ClInclude Include="OpIntersection.cuh" />
-    <ClInclude Include="OpRepeat.cuh" />
-    <ClInclude Include="OpSubtraction.cuh" />
-    <ClInclude Include="OpUnion.cuh" />
-    <ClInclude Include="Prism.cuh" />
-    <ClInclude Include="Pyramid.cuh" />
-    <ClInclude Include="Scene.cuh" />
-    <ClInclude Include="SierpinskiTriangle.cuh" />
-    <ClInclude Include="SmoothOperation.cuh" />
-    <ClInclude Include="SmOpIntersection.cuh" />
-    <ClInclude Include="SmOpSubtraction.cuh" />
-    <ClInclude Include="SmOpUnion.cuh" />
-    <ClInclude Include="Sphere.cuh" />
+    <ClInclude Include="library\Constants.cuh" />
+    <ClInclude Include="library\Controls.cuh" />
+    <ClInclude Include="library\DistanceField.cuh" />
+    <ClInclude Include="library\Figures.cuh" />
+    <ClInclude Include="library\Operations.cuh" />
+    <ClInclude Include="library\Operators\Normal\Operation.cuh" />
+    <ClInclude Include="library\Operators\Normal\OpIntersection.cuh" />
+    <ClInclude Include="library\Operators\Normal\OpRepeat.cuh" />
+    <ClInclude Include="library\Operators\Normal\OpSubtraction.cuh" />
+    <ClInclude Include="library\Operators\Normal\OpUnion.cuh" />
+    <ClInclude Include="library\Operators\Smooth\SmoothOperation.cuh" />
+    <ClInclude Include="library\Operators\Smooth\SmOpIntersection.cuh" />
+    <ClInclude Include="library\Operators\Smooth\SmOpSubtraction.cuh" />
+    <ClInclude Include="library\Operators\Smooth\SmOpUnion.cuh" />
+    <ClInclude Include="library\Scene.cuh" />
+    <ClInclude Include="library\Scene.h" />
+    <ClInclude Include="library\Shapes\Box.cuh" />
+    <ClInclude Include="library\Shapes\BoxBound.cuh" />
+    <ClInclude Include="library\Shapes\BoxRound.cuh" />
+    <ClInclude Include="library\Shapes\Figure.cuh" />
+    <ClInclude Include="library\Shapes\Mandelbrot.cuh" />
+    <ClInclude Include="library\Shapes\Prism.cuh" />
+    <ClInclude Include="library\Shapes\Pyramid.cuh" />
+    <ClInclude Include="library\Shapes\SierpinskiTriangle.cuh" />
+    <ClInclude Include="library\Shapes\Sphere.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

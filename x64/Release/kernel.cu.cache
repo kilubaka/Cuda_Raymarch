@@ -13,7 +13,7 @@ CudaRuntime=Static
 CudaToolkitCustomDir=
 DebugInformationFormat=None
 DebugInformationFormat=None
-Defines=;WIN32;WIN64;NDEBUG;_CONSOLE;_MBCS;
+Defines=_width=1280;_height=720;_ShadowIntensity=1.0;_ShadowPenumbra=60;_ShadowDistanceX=0.1;_ShadowDistanceY=60.0;_LightIntensity=1.0;_MainColorR=1;_MainColorG=1;_MainColorB=1;_LightColorR=0;_LightColorG=1;_LightColorB=0;_LightDirectionX=1.0;_LightDirectionY=0.0;_LightDirectionZ=1.0;_AoStepSize=0.2;_AoIntensity=0.2;_AoIterations=3;_Accuracy=0.001;_maxDistance=250;_ReflectionCount=0;_maxIteration=256;;WIN32;WIN64;NDEBUG;_CONSOLE;_MBCS;
 Emulation=false
 ExtensibleWholeProgramCompilation=false
 FastMath=false
@@ -22,7 +22,7 @@ GenerateRelocatableDeviceCode=false
 GPUDebugInfo=false
 GPUDebugInfo=false
 HostDebugInfo=false
-Include=Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include;Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\include;;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include
+Include=;;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include
 Inputs=
 InterleaveSourceInPTX=false
 Keep=false

@@ -41,7 +41,6 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\texture_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_functions.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_types.h
-C:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2\common\inc\helper_math.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cmath
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\concurrencysal.h
 Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\crtdefs.h
@@ -161,30 +160,33 @@ Y:\Windows Kits\10\Include\10.0.18362.0\um\winsvc.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\winuser.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\winver.h
 Y:\Windows Kits\10\Include\10.0.18362.0\um\wow64apiset.h
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Box.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\BoxBound.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\BoxRound.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Controls.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Figure.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Figures.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_ext.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_std.h
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\glew\include\GL\glew.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\kernel.cu
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Mandelbrot.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Operation.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Operations.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpIntersection.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpRepeat.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpSubtraction.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\OpUnion.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Prism.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Pyramid.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Scene.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SierpinskiTriangle.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmoothOperation.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpIntersection.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpSubtraction.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\SmOpUnion.cuh
-Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\Sphere.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\GL\freeglut\include\GL\freeglut.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\GL\glew\include\GL\glew.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\inc\helper_math.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Constants.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Controls.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\DistanceField.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Figures.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operations.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\Operation.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpRepeat.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpSubtraction.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpUnion.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmoothOperation.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpSubtraction.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpUnion.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Scene.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Box.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\BoxBound.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\BoxRound.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Figure.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Mandelbrot.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Prism.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Pyramid.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\SierpinskiTriangle.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Sphere.cuh

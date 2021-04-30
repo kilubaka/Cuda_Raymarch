@@ -4,68 +4,67 @@
     <CudaCompile Include="kernel.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Operations.cuh">
-      <Filter>Operators</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.cuh">
+    <ClInclude Include="library\Shapes\Box.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="BoxBound.cuh">
+    <ClInclude Include="library\Shapes\BoxBound.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="BoxRound.cuh">
+    <ClInclude Include="library\Shapes\BoxRound.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Figure.cuh">
+    <ClInclude Include="library\Shapes\Figure.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Figures.cuh">
+    <ClInclude Include="library\Shapes\Mandelbrot.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.cuh">
+    <ClInclude Include="library\Shapes\Prism.cuh">
       <Filter>Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Operation.cuh">
+    <ClInclude Include="library\Shapes\Pyramid.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="library\Shapes\SierpinskiTriangle.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="library\Shapes\Sphere.cuh">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="library\Operators\Normal\Operation.cuh">
       <Filter>Operators\Normal</Filter>
     </ClInclude>
-    <ClInclude Include="OpIntersection.cuh">
+    <ClInclude Include="library\Operators\Normal\OpIntersection.cuh">
       <Filter>Operators\Normal</Filter>
     </ClInclude>
-    <ClInclude Include="OpSubtraction.cuh">
+    <ClInclude Include="library\Operators\Normal\OpRepeat.cuh">
       <Filter>Operators\Normal</Filter>
     </ClInclude>
-    <ClInclude Include="OpUnion.cuh">
+    <ClInclude Include="library\Operators\Normal\OpSubtraction.cuh">
       <Filter>Operators\Normal</Filter>
     </ClInclude>
-    <ClInclude Include="SmoothOperation.cuh">
+    <ClInclude Include="library\Operators\Normal\OpUnion.cuh">
+      <Filter>Operators\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="library\Operators\Smooth\SmoothOperation.cuh">
       <Filter>Operators\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="SmOpUnion.cuh">
+    <ClInclude Include="library\Operators\Smooth\SmOpIntersection.cuh">
       <Filter>Operators\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="SmOpSubtraction.cuh">
+    <ClInclude Include="library\Operators\Smooth\SmOpSubtraction.cuh">
       <Filter>Operators\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="SmOpIntersection.cuh">
+    <ClInclude Include="library\Operators\Smooth\SmOpUnion.cuh">
       <Filter>Operators\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.cuh" />
-    <ClInclude Include="Controls.cuh" />
-    <ClInclude Include="Prism.cuh">
-      <Filter>Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Pyramid.cuh">
-      <Filter>Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="OpRepeat.cuh">
-      <Filter>Operators\Normal</Filter>
-    </ClInclude>
-    <ClInclude Include="SierpinskiTriangle.cuh">
-      <Filter>Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Mandelbrot.cuh">
-      <Filter>Shapes</Filter>
-    </ClInclude>
+    <ClInclude Include="library\Operations.cuh" />
+    <ClInclude Include="library\Figures.cuh" />
+    <ClInclude Include="library\Controls.cuh" />
+    <ClInclude Include="library\Scene.cuh" />
+    <ClInclude Include="library\DistanceField.cuh" />
+    <ClInclude Include="library\Constants.cuh" />
+    <ClInclude Include="library\Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operators">

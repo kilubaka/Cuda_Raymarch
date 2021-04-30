@@ -7,3 +7,6 @@
 *.opendb
 *.log
 *.tlog
+include/*
+inc/*
+.vs/*

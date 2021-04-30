@@ -12,6 +12,7 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\crt\math_functi
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\crt\sm_70_rt.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\crt\sm_80_rt.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\cuda_device_runtime_api.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\cuda_gl_interop.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\cuda_runtime.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\cuda_runtime_api.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\cuda_surface_types.h
@@ -40,39 +41,150 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\texture_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_functions.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include\vector_types.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\cmath
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\concurrencysal.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\crtdefs.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\cstdlib
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\limits.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\sal.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\use_ansi.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\vadefs.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\vcruntime.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\vcruntime_new.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\vcruntime_new_debug.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\vcruntime_string.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\xkeycheck.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\xtr1common
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\yvals.h
-Y:\VS19\Community\VC\Tools\MSVC\14.28.29333\include\yvals_core.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cmath
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\concurrencysal.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\crtdefs.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\cstdlib
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\excpt.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\intrin0.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\limits.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\sal.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\stdarg.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\use_ansi.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vadefs.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_new.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_new_debug.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\vcruntime_string.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xkeycheck.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\xtr1common
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\yvals.h
+Y:\VS19\Community\VC\Tools\MSVC\14.28.29910\include\yvals_core.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\apiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\apisetcconv.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\basetsd.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\driverspecs.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\guiddef.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\kernelspecs.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\ktmtypes.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\poppack.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack1.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack2.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack4.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\pshpack8.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\sdkddkver.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\sdv_driverspecs.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings_strict.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\specstrings_undef.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\stralign.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\tvout.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\winapifamily.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\windef.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\winpackagefamily.h
+Y:\Windows Kits\10\Include\10.0.18362.0\shared\wnnc.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_malloc.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memcpy_s.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_memory.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_search.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdio.h
+Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wctype.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstdlib.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wstring.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_wtime.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h
+Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\ctype.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\errno.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\math.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stddef.h
-Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h
 Y:\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\apiquery2.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi2.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\consoleapi3.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\datetimeapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\debugapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\enclaveapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\errhandlingapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\fibersapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\fileapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\fileapifromapp.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\GL\gl.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\GL\glu.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\handleapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\heapapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\ime_cmodes.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\imm.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\interlockedapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\ioapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\jobapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\jobapi2.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\libloaderapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\mcx.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\memoryapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\minwinbase.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\namedpipeapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\namespaceapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\processenv.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\processthreadsapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\processtopologyapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\profileapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\realtimeapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\reason.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\securityappcontainer.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\securitybaseapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\stringapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\synchapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\sysinfoapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\systemtopologyapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\threadpoolapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\threadpoollegacyapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\timezoneapi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\utilapiset.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\verrsrc.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winbase.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\wincon.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\wincontypes.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\windows.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winnetwk.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winnls.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winnt.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winreg.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winsvc.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winuser.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\winver.h
+Y:\Windows Kits\10\Include\10.0.18362.0\um\wow64apiset.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_ext.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\GL\freeglut\include\GL\freeglut_std.h
 Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\kernel.cu
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\GL\freeglut\include\GL\freeglut.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\GL\glew\include\GL\glew.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\..\inc\helper_math.h
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Controls.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Figures.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operations.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\Operation.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpRepeat.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpSubtraction.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Normal\OpUnion.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmoothOperation.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpIntersection.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpSubtraction.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Operators\Smooth\SmOpUnion.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Scene.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Box.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\BoxBound.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\BoxRound.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Figure.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Mandelbrot.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Prism.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Pyramid.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\SierpinskiTriangle.cuh
+Z:\XPK\2k20-21\Kyrsach\Cuda_Raymarch\library\Shapes\Sphere.cuh
